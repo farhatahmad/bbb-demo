@@ -6,30 +6,18 @@
 
 <div class="container">
   <div class="main">
-    <div class="left-half">
-      <div class="half-content">
-        <h2>Welcome</h2>
-        <p>
-          BigBlueButton is an open source web conferencing system for on-line learning. We believe that every student with a web browser should have access to a high-quality on-line learning experience We intend to make that possible with BigBlueButton.
-        </p>
-        <h2>
-          For Developers
-        </h2>
-        <p>
-          The BigBlueButton project is supported by a community of developers that care about good design and a streamlined user experience. See API examples for how to integrate BigBlueButton with your project.
-        </p>
-      </div>
-    </div>
-    <div class="right-half">
-      <div class="half-content join-meeting">
-        <h4>Try BigBlueButton</h4>
-        <p>Join a demo session on this server.</p>
-        <%= form_tag("/create", method: "post") do %>
-          <%= text_field_tag(:name) %>
-          <%= submit_tag("Join", class: "submit-button") %>
-        <% end %>
+    <div class="join-meeting">
+      <h2>Try BigBlueButton</h2>
+      <h4 class="extra-info">Join a demo session on this server.</h4>
 
+      <div class="login-form">
+        <%= form_tag("/create", method: "post") do %>
+        <%= text_field_tag(:name, "", {class: "form-text-field", placeholder: "Your Name"}) %>
+        <%= text_field_tag(:room_id, "", {class: "form-text-field", placeholder: "Meeting ID"}) %>
+        <%= submit_tag("Join", class: "submit-button") %>
+      <% end %>
     </div>
+
   </div>
 </div>
 </div>

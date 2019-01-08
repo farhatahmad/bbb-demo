@@ -8,41 +8,47 @@
 }
 
 .container {
-  padding: 5px;
+  padding: 25px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
-
-.left-half {
-  width: 50%;
-  float: left;
-}
-
-.right-half {
-  width: 50%;
-  float: right;
+.container .main {
   text-align: center;
 }
 
-.half-content {
-  border: 1px solid lightgrey;
+.extra-info {
+  color: grey;
+}
+
+.join-meeting {
+  border: 2px solid lightgrey;
+  border-radius: 40px;
   display: inline-block;
   padding: 10px 35px;
   background-color: #edf4fb;
 }
 
-.join-meeting input {
-  width: 100%;
+.join-meeting .form-text-field {
+  width: 75%;
+  font-size: 18px;
 }
 
-.join-meeting #name {
-  margin-top: 50px;
+.join-meeting .login-form {
+  margin-top: 40px;
+}
+
+.join-meeting .form-text-field {
+  margin-top: 20px;
 }
 
 .join-meeting .submit-button {
   color: white;
   background: #293c81;
-  padding: 5px;
+  padding: 15px 5px;
   border-radius: 10px;
   margin-top: 15px;
   left: 2px;
+  margin-bottom: 30px;
+  width: 50%;
+  font-size: 18px;
 }

@@ -6,7 +6,7 @@ class PagesController < ApplicationController
   def create_and_join_meeting
     prepare
 
-    create
+    create(request.params[:room_id])
 
     join(request.params[:name])
   end
@@ -19,9 +19,9 @@ class PagesController < ApplicationController
     @api = BigBlueButton::BigBlueButtonApi.new(url, secret, version.to_s, true)
   end
 
-  def create
-    @meeting_name = 'Demo Meeting'
-    @meeting_id = 'demo-meeting'
+  def create(room_id = "default-room-id")
+    @meeting_name = room_id.gsub('-', ' ').titleize
+    @meeting_id = room_id
     @options = {
       moderatorPW: 'mp',
       attendeePW: 'ap'

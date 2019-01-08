@@ -3,6 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .header .container {
   text-align: center;
+  border-bottom: 1px solid lightgrey;
+  margin-bottom: 30px;
 }
 
 .container {
@@ -21,6 +23,26 @@
   text-align: center;
 }
 
-.join-form {
-  border: 1px solid grey;
+.half-content {
+  border: 1px solid lightgrey;
+  display: inline-block;
+  padding: 10px 35px;
+  background-color: #edf4fb;
+}
+
+.join-meeting input {
+  width: 100%;
+}
+
+.join-meeting #name {
+  margin-top: 50px;
+}
+
+.join-meeting .submit-button {
+  color: white;
+  background: #293c81;
+  padding: 5px;
+  border-radius: 10px;
+  margin-top: 15px;
+  left: 2px;
 }

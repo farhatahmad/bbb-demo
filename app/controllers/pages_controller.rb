@@ -8,11 +8,9 @@ class PagesController < ApplicationController
   def create_and_join_meeting
     prepare()
 
-
     create()
 
-
-    join()
+    join(request.params[:name])
   end
 
   def prepare
@@ -40,8 +38,8 @@ class PagesController < ApplicationController
     end
   end
 
-  def join
-    url = @api.join_meeting_url(@meeting_id,"Ahmad", @options[:moderatorPW])
+  def join(username)
+    url = @api.join_meeting_url(@meeting_id, username, @options[:moderatorPW])
     puts "1) Moderator URL = #{url}"
   end
 

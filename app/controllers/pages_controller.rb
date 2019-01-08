@@ -20,8 +20,8 @@ class PagesController < ApplicationController
   end
 
   def create
-    @meeting_name = 'Test Meeting 1'
-    @meeting_id = 'test-meeting-1'
+    @meeting_name = 'Demo Meeting'
+    @meeting_id = 'demo-meeting'
     @options = {
       moderatorPW: 'mp',
       attendeePW: 'ap'

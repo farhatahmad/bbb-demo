@@ -15,7 +15,7 @@
           <%= form_tag("/create", method: "post") do %>
           <%= text_field_tag(:name, "", {class: "form-text-field", placeholder: "Your Name"}) %>
           <%= text_field_tag(:room_id, "", {class: "form-text-field", placeholder: "Meeting ID"}) %>
-          <%= submit_tag("Join", class: "submit-button") %>
+          <%= submit_tag("Join Room", class: "submit-button") %>
         <% end %>
       </div>
 
@@ -23,15 +23,30 @@
 
   </div>
   <div class="left-half">
-    <div class="current-rooms rounded-border">
+    <div id="current-rooms" class="rounded-border">
       <h2>Current Rooms Available</h2>
       <h4 class="extra-info">Enter one of these IDs in the Meeting ID field on the right (or create your own)</h4>
       <% if @current_rooms_created[:meetings].length == 0 %>
         <h4 class="extra-info">No rooms are currently available</h4>
       <% end %>
-      <ul id="current-rooms-table">
+      <ul class="styled-table">
         <% @current_rooms_created[:meetings].each do |room|%>
           <li class="table-row .extra-info"><%= room[:meetingID] %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div id="current-recordings" class="rounded-border">
+      <h2>Current Recordings</h2>
+      <h4 class="extra-info">If your recording does not appear below, please give it some time</h4>
+      <% if @current_recordings[:recordings].length == 0 %>
+        <h4 class="extra-info">No recordings are currently available</h4>
+      <% end %>
+      <ul class="styled-table">
+        <% @current_recordings[:recordings].each do |rec|%>
+          <li class="table-row .extra-info">
+            <%= rec[:meetingID] %> (<%= rec[:startTime] %>
+              <i class="fas fa-trash" data-recordID="<%= rec[:recordID] %>" title="Delete Recording"></i>
+          </li>
         <% end %>
       </ul>
     </div>

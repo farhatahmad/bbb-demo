@@ -5,6 +5,8 @@ class PagesController < ApplicationController
     intialize_api_connection
 
     @current_rooms_created = @api.get_meetings
+
+    @current_recordings = @api.get_recordings
   end
 
   def create_and_join_meeting
@@ -28,7 +30,9 @@ class PagesController < ApplicationController
     @meeting_id = room_id
     @options = {
       moderatorPW: 'mp',
-      attendeePW: 'ap'
+      attendeePW: 'ap',
+      record: 'true',
+      autoStartRecording: 'true'
     }
 
     if @api.is_meeting_running?(@meeting_id)

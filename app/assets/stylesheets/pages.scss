@@ -1,6 +1,7 @@
 // Place all the styles related to the Pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
 .header .container {
   text-align: center;
   border-bottom: 1px solid lightgrey;
@@ -10,45 +11,69 @@
 .container {
   padding: 25px;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-}
 
-.container .main {
-  text-align: center;
-}
+  .main {
+    text-align: center;
 
-.extra-info {
-  color: grey;
+    .left-half {
+      width: 40%;
+      float: left;
+    }
+
+    .right-half {
+      width: 40%;
+      float: right;
+      border-left: 1px solid lightgrey;
+      padding-left: 10%
+    }
+
+    .rounded-border {
+      border: 2px solid lightgrey;
+      border-radius: 40px;
+      display: inline-block;
+      padding: 10px 35px;
+      background-color: #edf4fb;
+    }
+
+    .extra-info {
+      color: grey;
+    }
+  }
 }
 
 .join-meeting {
-  border: 2px solid lightgrey;
-  border-radius: 40px;
-  display: inline-block;
-  padding: 10px 35px;
-  background-color: #edf4fb;
-}
-
-.join-meeting .form-text-field {
   width: 75%;
-  font-size: 18px;
+
+  .form-text-field {
+    width: 75%;
+    font-size: 18px;
+    margin-top: 20px;
+  }
+
+  .login-form {
+    margin-top: 40px;
+  }
+
+  .submit-button {
+    color: white;
+    background: #293c81;
+    padding: 15px 5px;
+    border-radius: 10px;
+    margin-top: 15px;
+    left: 2px;
+    width: 50%;
+    font-size: 18px;
+  }
 }
 
-.join-meeting .login-form {
-  margin-top: 40px;
-}
+.current-rooms {
+  #current-rooms-table {
+    list-style: none;
 
-.join-meeting .form-text-field {
-  margin-top: 20px;
-}
-
-.join-meeting .submit-button {
-  color: white;
-  background: #293c81;
-  padding: 15px 5px;
-  border-radius: 10px;
-  margin-top: 15px;
-  left: 2px;
-  margin-bottom: 30px;
-  width: 50%;
-  font-size: 18px;
+    .table-row {
+      border: 2px solid lightgrey;
+      font-size: 18px;
+      padding: 10px;
+    }
+  }
 }

@@ -6,18 +6,34 @@
 
 <div class="container">
   <div class="main">
-    <div class="join-meeting">
-      <h2>Try BigBlueButton</h2>
-      <h4 class="extra-info">Join a demo session on this server.</h4>
+    <div class="right-half">
+      <div class="join-meeting rounded-border">
+        <h2>Try BigBlueButton</h2>
+        <h4 class="extra-info">Join a demo session on this server.</h4>
 
-      <div class="login-form">
-        <%= form_tag("/create", method: "post") do %>
-        <%= text_field_tag(:name, "", {class: "form-text-field", placeholder: "Your Name"}) %>
-        <%= text_field_tag(:room_id, "", {class: "form-text-field", placeholder: "Meeting ID"}) %>
-        <%= submit_tag("Join", class: "submit-button") %>
-      <% end %>
+        <div class="login-form">
+          <%= form_tag("/create", method: "post") do %>
+          <%= text_field_tag(:name, "", {class: "form-text-field", placeholder: "Your Name"}) %>
+          <%= text_field_tag(:room_id, "", {class: "form-text-field", placeholder: "Meeting ID"}) %>
+          <%= submit_tag("Join", class: "submit-button") %>
+        <% end %>
+      </div>
+
     </div>
 
   </div>
-</div>
+  <div class="left-half">
+    <div class="current-rooms rounded-border">
+      <h2>Current Rooms Available</h2>
+      <h4 class="extra-info">Enter one of these IDs in the Meeting ID field on the right (or create your own)</h4>
+      <% if @current_rooms_created[:meetings].length == 0 %>
+        <h4 class="extra-info">No rooms are currently available</h4>
+      <% end %>
+      <ul id="current-rooms-table">
+        <% @current_rooms_created[:meetings].each do |room|%>
+          <li class="table-row .extra-info"><%= room[:meetingID] %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 </div>

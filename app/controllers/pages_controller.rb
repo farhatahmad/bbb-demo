@@ -22,8 +22,8 @@ class PagesController < ApplicationController
   end
 
   def intialize_api_connection
-    url = 'http://10.8.186.201/bigbluebutton/api'
-    secret = 'eae6b20cd43c742e3f89b49eebfeeaf1'
+    url = (ENV['BIGBLUEBUTTON_ENDPOINT'] || 'http://test-install.blindsidenetworks.com/bigbluebutton/') + 'api'
+    secret = ENV['BIGBLUEBUTTON_SECRET'] || '8cd8ef52e8e101574e400365b55e11a6'
     version = 0.81
 
     @api = BigBlueButton::BigBlueButtonApi.new(url, secret, version.to_s, true)
@@ -33,11 +33,11 @@ class PagesController < ApplicationController
     @meeting_name = room_id.tr('-', ' ').titleize
     @meeting_id = room_id
     @options = {
-      moderatorPW: 'mp',
-      attendeePW: 'ap',
+      moderatorPW: ENV['DEMO_MP'] || 'mp',
+      attendeePW: ENV['DEMO_AP'] || 'ap',
       record: record.to_s,
       autoStartRecording: record.to_s,
-      logoutURL: 'http://localhost:3000'
+      logoutURL: root_url
     }
 
     if @api.is_meeting_running?(@meeting_id)

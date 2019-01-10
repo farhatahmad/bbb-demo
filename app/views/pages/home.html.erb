@@ -38,7 +38,7 @@
         <% @current_rooms_created[:meetings].each do |room|%>
           <li class="table-row .extra-info">
             <%= room[:meetingID] %>
-              <i class="fas fa-sign-in-alt" data-roomID="<%= room[:meetingID] %>" title="Join Meeting"></i>
+              <i class="join-room fas fa-sign-in-alt" data-roomID="<%= room[:meetingID] %>" title="Join Meeting"></i>
           </li>
         <% end %>
       </ul>
@@ -53,7 +53,7 @@
         <% @current_recordings[:recordings].each do |rec|%>
           <li class="table-row .extra-info">
             <%= rec[:meetingID] %> (<%= rec[:startTime] %>
-              <i class="fas fa-trash" data-recordID="<%= rec[:recordID] %>" title="Delete Recording"></i>
+              <i class="delete-recording fas fa-trash"  data-id="<%= rec[:recordID] %>" title="Delete Recording"></i>
           </li>
         <% end %>
       </ul>

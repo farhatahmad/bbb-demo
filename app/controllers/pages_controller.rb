@@ -37,7 +37,7 @@ class PagesController < ApplicationController
       attendeePW: 'ap',
       record: record.to_s,
       autoStartRecording: record.to_s,
-      logoutURL: "http://localhost:3000"
+      logoutURL: 'http://localhost:3000'
     }
 
     if @api.is_meeting_running?(@meeting_id)

@@ -89,6 +89,10 @@
     .fas {
       float: right;
       color: #293c81;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 }

@@ -4,5 +4,14 @@
 
 function deleteRecording(iconClicked){
   var recordID = $(iconClicked).data('id')
-  console.log("delete recording" + recordID)
-})
+
+  $.post("/deleteRecording", {recordID}, function(){
+    location.reload()
+  })
+}
+
+function joinRoom(iconClicked) {
+  var meetingID = $(iconClicked).data('id')
+  $("#room_id").val(meetingID)
+  $("#room_id").css("box-shadow","0px 0px 5px green")
+}

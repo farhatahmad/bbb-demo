@@ -17,8 +17,8 @@
           <%= password_field_tag(:password, "", {class: "form-text-field", placeholder: "Password", required: ""}) %>
           <%= text_field_tag(:room_id, "", {class: "form-text-field", placeholder: "Meeting ID", required: ""}) %>
           <span class="form-check-box">
-          <%= check_box_tag(:record, "", {}) %>
-          Record Meeting
+            <%= check_box_tag(:record, "", {}) %>
+            Record Meeting
           </span>
           <%= submit_tag("Join Room", class: "submit-button") %>
         <% end %>
@@ -38,7 +38,7 @@
         <% @current_rooms_created[:meetings].each do |room|%>
           <li class="table-row .extra-info">
             <%= room[:meetingID] %>
-              <i class="join-room fas fa-sign-in-alt" data-roomID="<%= room[:meetingID] %>" title="Join Meeting"></i>
+            <i class="join-room fas fa-sign-in-alt" onclick="joinRoom(this)" data-id="<%= room[:meetingID] %>" title="Join Meeting"></i>
           </li>
         <% end %>
       </ul>
@@ -52,8 +52,9 @@
       <ul class="styled-table">
         <% @current_recordings[:recordings].each do |rec|%>
           <li class="table-row .extra-info">
-            <%= rec[:meetingID] %> (<%= rec[:startTime] %>
-              <i class="delete-recording fas fa-trash"  data-id="<%= rec[:recordID] %>" title="Delete Recording"></i>
+            <%= rec[:meetingID] %>
+            (<%= rec[:startTime]%>)
+            <i class="delete-recording fas fa-trash" onclick="deleteRecording(this)" data-id="<%= rec[:recordID] %>" title="Delete Recording"></i>
           </li>
         <% end %>
       </ul>

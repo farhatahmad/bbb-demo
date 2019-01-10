@@ -13,8 +13,13 @@
 
         <div class="login-form">
           <%= form_tag("/create", method: "post") do %>
-          <%= text_field_tag(:name, "", {class: "form-text-field", placeholder: "Your Name"}) %>
-          <%= text_field_tag(:room_id, "", {class: "form-text-field", placeholder: "Meeting ID"}) %>
+          <%= text_field_tag(:name, "", {class: "form-text-field", placeholder: "Your Name", required: ""}) %>
+          <%= password_field_tag(:password, "", {class: "form-text-field", placeholder: "Password", required: ""}) %>
+          <%= text_field_tag(:room_id, "", {class: "form-text-field", placeholder: "Meeting ID", required: ""}) %>
+          <span class="form-check-box">
+          <%= check_box_tag(:record, "", {}) %>
+          Record Meeting
+          </span>
           <%= submit_tag("Join Room", class: "submit-button") %>
         <% end %>
       </div>
@@ -31,7 +36,10 @@
       <% end %>
       <ul class="styled-table">
         <% @current_rooms_created[:meetings].each do |room|%>
-          <li class="table-row .extra-info"><%= room[:meetingID] %></li>
+          <li class="table-row .extra-info">
+            <%= room[:meetingID] %>
+              <i class="fas fa-sign-in-alt" data-roomID="<%= room[:meetingID] %>" title="Join Meeting"></i>
+          </li>
         <% end %>
       </ul>
     </div>

@@ -12,9 +12,13 @@ class PagesController < ApplicationController
   def create_and_join_meeting
     intialize_api_connection
 
-    create_room(request.params[:room_id])
+    record = false
 
-    join_room(request.params[:name])
+    record = true if request.params[:record]
+
+    create_room(request.params[:room_id], record)
+
+    join_room(request.params[:name], request.params[:password])
   end
 
   def intialize_api_connection
@@ -25,14 +29,15 @@ class PagesController < ApplicationController
     @api = BigBlueButton::BigBlueButtonApi.new(url, secret, version.to_s, true)
   end
 
-  def create_room(room_id = "default-room-id")
-    @meeting_name = room_id.gsub('-', ' ').titleize
+  def create_room(room_id = 'default-room-id', record = false)
+    @meeting_name = room_id.tr('-', ' ').titleize
     @meeting_id = room_id
     @options = {
       moderatorPW: 'mp',
       attendeePW: 'ap',
-      record: 'true',
-      autoStartRecording: 'true'
+      record: record.to_s,
+      autoStartRecording: record.to_s,
+      logoutURL: "http://localhost:3000"
     }
 
     if @api.is_meeting_running?(@meeting_id)
@@ -43,8 +48,8 @@ class PagesController < ApplicationController
     end
   end
 
-  def join_room(username)
-    url = @api.join_meeting_url(@meeting_id, username, @options[:moderatorPW])
+  def join_room(username, password)
+    url = @api.join_meeting_url(@meeting_id, username, password)
     redirect_to url.to_s
   end
 end

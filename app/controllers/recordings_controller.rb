@@ -14,4 +14,5 @@ class RecordingsController < ApplicationController
   def get_recordings
     @@api.get_recordings
   end
+
 end

@@ -15,3 +15,9 @@ function joinRoom(iconClicked) {
   $("#room_id").val(meetingID)
   $("#room_id").css("box-shadow","0px 0px 5px green")
 }
+
+function playRecording(iconClicked) {
+  var url = $(iconClicked).data('url')
+  var win = window.open(url, '_blank');
+  win.focus();
+}

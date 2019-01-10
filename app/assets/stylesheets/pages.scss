@@ -47,7 +47,6 @@
 }
 
 .join-meeting {
-
   .form-text-field {
     width: 75%;
     font-size: 18px;
@@ -86,9 +85,10 @@
     padding: 10px;
     text-align: left;
 
-    .fas {
+    i {
       float: right;
       color: #293c81;
+      padding-left: 10px;
 
       &:hover {
         cursor: pointer;

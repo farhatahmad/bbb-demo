@@ -14,6 +14,8 @@ function joinRoom(iconClicked) {
   var meetingID = $(iconClicked).data('id')
   $("#room_id").val(meetingID)
   $("#room_id").css("box-shadow","0px 0px 5px green")
+
+  setTimeout(function() {   $("#room_id").css("box-shadow","") }, 2000);
 }
 
 function playRecording(iconClicked) {

@@ -52,9 +52,7 @@
       <ul class="styled-table">
         <% @current_recordings[:recordings].each do |rec|%>
           <li class="table-row .extra-info">
-            <%= rec[:meetingID] %>
-            (<%= rec[:startTime]%>)
-
+            <%= rec[:meetingID] %> (<%= rec[:startTime]%>)
             <i class="delete-recording fas fa-trash" onclick="deleteRecording(this)" data-id="<%= rec[:recordID] %>" title="Delete Recording"></i>
             <i class="far fa-eye" onclick="playRecording(this)" data-url="<%= rec[:playback][:format][:url] %>" title="Watch Recording"></i>
           </li>

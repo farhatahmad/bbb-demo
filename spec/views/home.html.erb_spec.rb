@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'pages/home.html.erb' do
   it 'displays recordings correctly' do
-
+    meeting_inprogress_id = 'test-meeting-display'
     meeting_id = 'test-room-recording'
     start_time = '2010-01-10T17:37:55-05:00'
     record_id = 'test-record-id'
@@ -15,18 +15,38 @@ describe 'pages/home.html.erb' do
         recordID: record_id,
         playback: {
           format: {
-            url: download_url,
-          },
-        },
-      ],
+            url: download_url
+          }
+        }
+      ]
     }
 
-    assign(:current_rooms_created, {meetings: [ ]})
+    mock_meeting = { meetings: [] }
+
+    assign(:current_rooms_created, mock_meeting)
     assign(:current_recordings, mock_recording)
 
     render
 
-    expect(rendered).to include(meeting_id.to_s + " (" + start_time.to_s + ")")
+    expect(rendered).to include(meeting_id + ' (' + start_time + ')')
+  end
 
+  it 'displays opened rooms correctly' do
+    meeting_inprogress_id = 'test-meeting-display'
+
+    mock_recording = { recordings: [] }
+
+    mock_meeting = {
+      meetings: [
+        meetingID: meeting_inprogress_id
+      ]
+    }
+
+    assign(:current_rooms_created, mock_meeting)
+    assign(:current_recordings, mock_recording)
+
+    render
+
+    expect(rendered).to include(meeting_inprogress_id)
   end
 end

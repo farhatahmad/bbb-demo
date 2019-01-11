@@ -44,8 +44,14 @@ class PagesController < ApplicationController
     end
   end
 
-  def join_room(username, password)
-    url = @@api.join_meeting_url(@meeting_id, username, password)
+  def join_room(username, password, id = "")
+    if id == ""
+      meeting_room = @meeting_id
+    else
+      meeting_room = id
+    end
+
+    url = @@api.join_meeting_url(meeting_room, username, password)
     redirect_to url.to_s
   end
 end

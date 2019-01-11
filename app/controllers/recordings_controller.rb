@@ -6,8 +6,8 @@ class RecordingsController < ApplicationController
     @@api = initialize_api
   end
 
-  def delete_recording
-    id = request.params[:recordID]
+  def delete_recording(id = "")
+    id = request.params[:recordID] if id == ""
     @@api.delete_recordings(id)
   end
 

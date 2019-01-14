@@ -6,6 +6,6 @@ module InitializeHelper
     secret = ENV['BIGBLUEBUTTON_SECRET'] || '8cd8ef52e8e101574e400365b55e11a6'
     version = 0.81
 
-    BigBlueButton::BigBlueButtonApi.new(url, secret, version.to_s, true)
+    BigBlueButton::BigBlueButtonApi.new(url, secret, version.to_s, false)
   end
 end

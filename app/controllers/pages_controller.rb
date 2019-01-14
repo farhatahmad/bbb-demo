@@ -1,30 +1,32 @@
 require 'bigbluebutton_api'
 
 class PagesController < ApplicationController
-  include InitializeHelper
+  include InitializeHelper #uses the InitializeHelper module
 
+  #initializes the api and creates an instance of the recording class
   def initialize
     super
-    @@api = initialize_api
+    @@api = initialize_api  #calls the function in the InitializeHelper module
     @@recording_controller = RecordingsController.new
   end
 
+  #function that runs on "/" page load
   def home
     @current_rooms_created = @@api.get_meetings
-
     @current_recordings = @@recording_controller.get_recordings
   end
 
+  #function that first creates the meeting and then joins the user to the meeting
+  #using the values set in the POST response
   def create_and_join_meeting
-    record = false
-
-    record = true if request.params[:record]
+    record = if request.params[:record] then true else false
 
     create_room(request.params[:room_id], record)
 
     join_room(request.params[:name], request.params[:password])
   end
 
+  #creates a room in Big Blue Button
   def create_room(room_id = 'default-room-id', record = false)
     @meeting_name = room_id.tr('-', ' ').titleize
     @meeting_id = room_id
@@ -44,6 +46,7 @@ class PagesController < ApplicationController
     end
   end
 
+  #adds the user to the specified room with the specified privileges
   def join_room(username, password, id = "")
     if id == ""
       meeting_room = @meeting_id

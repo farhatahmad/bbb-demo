@@ -19,7 +19,7 @@ class PagesController < ApplicationController
   #function that first creates the meeting and then joins the user to the meeting
   #using the values set in the POST response
   def create_and_join_meeting
-    record = if request.params[:record] then true else false
+    record = if request.params[:record] then true else false end
 
     create_room(request.params[:room_id], record)
 
@@ -48,11 +48,8 @@ class PagesController < ApplicationController
 
   #adds the user to the specified room with the specified privileges
   def join_room(username, password, id = "")
-    if id == ""
-      meeting_room = @meeting_id
-    else
-      meeting_room = id
-    end
+    meeting_room = id == if id == "" then @meeting_id else id end
+
 
     url = @@api.join_meeting_url(meeting_room, username, password)
     redirect_to url.to_s

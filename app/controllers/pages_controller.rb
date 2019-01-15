@@ -48,7 +48,7 @@ class PagesController < ApplicationController
 
   #adds the user to the specified room with the specified privileges
   def join_room(username, password, id = "")
-    meeting_room = id == if id == "" then @meeting_id else id end
+    meeting_room = if id == "" then @meeting_id else id end
 
 
     url = @@api.join_meeting_url(meeting_room, username, password)

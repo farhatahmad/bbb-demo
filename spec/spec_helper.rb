@@ -13,8 +13,6 @@
 # it.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
-require 'coveralls'
-Coveralls.wear!('rails')
 
 require 'capybara/rspec'
 

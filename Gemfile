@@ -20,6 +20,8 @@ gem 'bigbluebutton-api-ruby', '~> 1.4'
 
 gem 'jquery-rails'
 
+gem 'pg'
+
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -77,4 +79,3 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
-gem 'coveralls', require: false
